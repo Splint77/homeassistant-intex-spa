@@ -2,16 +2,15 @@
   "domain": "intex_spa",
   "name": "Intex Spa",
   "codeowners": [
-    "@mathieu-mp"
+    "@Splint77"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/mathieu-mp/homeassistant-intex-spa",
+  "documentation": "https://github.com/Splint77/homeassistant-intex-spa",
   "integration_type": "device",
   "iot_class": "local_polling",
-  "issue_tracker": "https://github.com/mathieu-mp/homeassistant-intex-spa/issues",
+  "issue_tracker": "https://github.com/Splint77/homeassistant-intex-spa/issues",
   "requirements": [
-    "intex-spa==0.9.0",
-    "aio-intex-spa==0.9.0"
+    "intex-spa==0.9.0"
   ],
   "version": "0.0.0"
 }

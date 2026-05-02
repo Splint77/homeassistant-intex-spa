@@ -11,7 +11,7 @@ from homeassistant.data_entry_flow import FlowResult
 from homeassistant.exceptions import HomeAssistantError
 
 # Custom Integration
-from aio_intex_spa import IntexSpa, IntexSpaDnsException
+from .aio_intex_spa import IntexSpa, IntexSpaDnsException
 from .const import (
     STEP_USER_MAIN_SCHEMA,
     DOMAIN,

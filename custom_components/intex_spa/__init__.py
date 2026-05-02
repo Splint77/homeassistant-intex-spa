@@ -14,7 +14,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.typing import ConfigType
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
-from aio_intex_spa import IntexSpa, IntexSpaUnreachableException, IntexSpaDnsException
+from .aio_intex_spa import IntexSpa, IntexSpaUnreachableException, IntexSpaDnsException
 from .const import (
     DOMAIN,
     PLATFORMS,
