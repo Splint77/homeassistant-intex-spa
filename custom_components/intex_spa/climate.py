@@ -84,7 +84,7 @@ class IntexSpaClimate(IntexSpaEntity, ClimateEntity):
     def min_temp(self):
         """Return the minimum temperature."""
         if self.temperature_unit == UnitOfTemperature.CELSIUS:
-            return 20
+            return 10
         else:
             return 50
 
