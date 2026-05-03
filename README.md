@@ -3,7 +3,6 @@
 [![hacs][hacsbadge]][hacs]
 [![GitHub Release][releases-shield]][releases]
 ![Project Maintenance][maintenance-shield]
-[![Open in Remote - Containers][devcontainer-badge]][devcontainer]
 
 ## Disclaimers
 Intex brand is not involved in any way with this integration.
@@ -90,11 +89,14 @@ Platform | Entity | Description | Remarks
 
 ## Installation
 
-Installation is done using [HACS][hacs]:
+Installation is done via [HACS][hacs] using a custom repository:
 
 1. Go to your Home Assistant instance
-1. Go to "HACS" tab -> "Integrations" -> Click "+"
-1. Search for "Intex Spa" -> Select it -> Click "Download with HACS"
+1. Go to "HACS" tab -> "Integrations"
+1. Click the three-dot menu (⋮) in the top-right corner -> "Custom repositories"
+1. Enter `https://github.com/Splint77/homeassistant-intex-spa` as the repository URL and select "Integration" as the category -> Click "Add"
+1. Close the dialog, then click "+" to browse integrations
+1. Search for "Intex Spa" -> Select it -> Click "Download"
 
 ## Configuration
 
@@ -129,15 +131,13 @@ The versioning of this integration follows Semantic Versioning 2.0.0
 [license]: LICENSE
 [intex_spa_package]: https://github.com/mathieu-mp/intex-spa
 [hacs]: https://hacs.xyz/
-[hacsbadge]: https://img.shields.io/badge/HACS-Default-41BDF5.svg
+[hacsbadge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [img_screenshot]: assets/screenshot_fr.png
 [img_backpanel_compatible]: assets/backpanel_compatible.png
 [img_backpanel_uncompatible]: assets/backpanel_uncompatible.png
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2025.svg
-[releases-shield]: https://img.shields.io/github/release/mathieu-mp/homeassistant-intex-spa.svg
-[releases]: https://github.com/mathieu-mp/homeassistant-intex-spa/releases
-[devcontainer]: https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/mathieu-mp/homeassistant-intex-spa
-[devcontainer-badge]: https://img.shields.io/static/v1?label=Remote%20-%20Containers&message=Open&color=blue&logo=visualstudiocode
-[esptouch_issue]: https://github.com/mathieu-mp/homeassistant-intex-spa/issues/51
+[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
+[releases-shield]: https://img.shields.io/github/release/Splint77/homeassistant-intex-spa.svg
+[releases]: https://github.com/Splint77/homeassistant-intex-spa/releases
+[esptouch_issue]: https://github.com/Splint77/homeassistant-intex-spa/issues/51
 [intex_link_wifi_discussion]: https://community.home-assistant.io/t/intex-pure-spa-wifi-control/323591/120?u=mathieu-mp
 [intex_link_local_tuya_discussion]: https://community.home-assistant.io/t/intex-pure-spa-wifi-control/323591/118?u=mathieu-mp
