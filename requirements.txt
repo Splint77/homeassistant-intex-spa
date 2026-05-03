@@ -1,7 +1,3 @@
-# Patch-version pinned packages
-intex-spa==0.9.0
-aio-intex-spa==0.9.1
-
 # Minor-version pinned packages
 pip~=25.2
 colorlog~=6.10.1
