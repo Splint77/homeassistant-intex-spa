@@ -95,6 +95,8 @@ Installation is done via [HACS][hacs] using a custom repository:
 1. Go to "HACS" tab -> "Integrations"
 1. Click the three-dot menu (⋮) in the top-right corner -> "Custom repositories"
 1. Enter `https://github.com/Splint77/homeassistant-intex-spa` as the repository URL and select "Integration" as the category -> Click "Add"
+
+   > **Note:** This integration is published from the [`splint77`](https://github.com/Splint77/homeassistant-intex-spa/tree/splint77) branch.
 1. Close the dialog, then click "+" to browse integrations
 1. Search for "Intex Spa" -> Select it -> Click "Download"
 
