@@ -2,7 +2,7 @@
 
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.helpers.device_registry import DeviceInfo
+from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, DeviceInfo, format_mac
 from . import IntexSpaDataUpdateCoordinator
 
 from .const import (
@@ -34,18 +34,15 @@ class IntexSpaEntity(CoordinatorEntity):
     @property
     def device_info(self) -> DeviceInfo:
         """Return the properties of the device as a DeviceInfo."""
-        return {
-            "identifiers": {
-                # Serial numbers are unique identifiers within a specific domain
-                (
-                    DOMAIN,
-                    self.coordinator.info.uid,
-                )
-            },
-            "name": self.entry.data.get("name", DEFAULT_NAME),
-            "model": self.entry.data.get("name", DEFAULT_NAME),
-            "manufacturer": NAME,
-        }
+        info = DeviceInfo(
+            identifiers={(DOMAIN, self.coordinator.info.uid)},
+            name=self.entry.data.get("name", DEFAULT_NAME),
+            model=self.entry.data.get("name", DEFAULT_NAME),
+            manufacturer=NAME,
+        )
+        if mac := self.entry.data.get("mac_address"):
+            info["connections"] = {(CONNECTION_NETWORK_MAC, format_mac(mac))}
+        return info
 
     @property
     def available(self) -> bool:

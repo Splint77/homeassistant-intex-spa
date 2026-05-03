@@ -8,6 +8,7 @@ from __future__ import annotations
 
 
 import logging
+import re
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -42,6 +43,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     coordinator = IntexSpaDataUpdateCoordinator(hass, api=api)
     await coordinator.async_config_entry_first_refresh()
     await coordinator.async_update_info()
+
+    if not entry.data.get("mac_address"):
+        mac = await _async_get_mac_from_arp(hass, coordinator.info.ip)
+        if mac:
+            hass.config_entries.async_update_entry(
+                entry, data={**entry.data, "mac_address": mac}
+            )
+
     hass.data[DOMAIN][entry.entry_id] = coordinator
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
@@ -49,6 +58,25 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
 
     return True
+
+
+async def _async_get_mac_from_arp(hass: HomeAssistant, ip_address: str) -> str | None:
+    """Resolve MAC address for an IP address via the system ARP table."""
+
+    def _read_arp_table() -> str | None:
+        try:
+            with open("/proc/net/arp") as arp_file:
+                for line in arp_file:
+                    parts = line.split()
+                    if len(parts) >= 4 and parts[0] == ip_address:
+                        mac = parts[3]
+                        if re.match(r"^([0-9a-f]{2}:){5}[0-9a-f]{2}$", mac, re.IGNORECASE):
+                            return mac.lower()
+        except OSError:
+            pass
+        return None
+
+    return await hass.async_add_executor_job(_read_arp_table)
 
 
 class IntexSpaDataUpdateCoordinator(DataUpdateCoordinator):
