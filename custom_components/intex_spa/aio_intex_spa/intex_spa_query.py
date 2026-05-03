@@ -93,7 +93,7 @@ class IntexSpaQuery:
 
         self.request: str = COMMAND[intent]["request"]
         if intent == "preset_temp":
-            self.request = self.request + hex(preset_temp)[2:].upper().zfill(2)
+            self.request = self.request + format(preset_temp, "02X")
 
         self.type: int = COMMAND[intent]["type"]
 
